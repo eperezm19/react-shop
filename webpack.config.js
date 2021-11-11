@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   mode: 'development',
   resolve: {
@@ -30,7 +31,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(css|scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
@@ -44,9 +45,7 @@ module.exports = {
       filename: '[name].css',
     }),
   ],
-  // devServer: {
-  //   contentBase: path.join(__dirname, 'dist'),
-  //   compress: true,
-  //   port: 3005,
-  // },
+  devServer: {
+    historyApiFallback: true,
+  },
 };
