@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import logo from '@logos/logo_yard_sale.svg';
 
-import '../styles/Login.scss';
+import '@styles/Login.scss';
 
 export const Login = () => {
+  const form = useRef(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(form.current);
+    const formData = new FormData(form.current);
+    const data = {
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
+    console.log(data);
+  };
+
   return (
     <div className='login'>
       <div className='form-container'>
-        <img src='./logos/logo_yard_sale.svg' alt='logo' className='logo' />
+        <img src={logo} alt='logo' className='logo' />
 
-        <form action='/' className='form'>
+        <form action='/' className='form' ref={form}>
           <label htmlFor='email' className='label'>
             Email address
           </label>
           <input
             type='text'
-            id='email'
+            name='email'
             placeholder='platzi@example.cm'
             className='input input-email'
           />
@@ -24,16 +38,18 @@ export const Login = () => {
           </label>
           <input
             type='password'
-            id='password'
+            name='password'
             placeholder='*********'
             className='input input-password'
           />
 
-          <input
-            type='submit'
+          <button
+            onClick={handleSubmit}
             value='Log in'
             className='primary-button login-button'
-          />
+          >
+            Log in
+          </button>
           <a href='/'>Forgot my password</a>
         </form>
 

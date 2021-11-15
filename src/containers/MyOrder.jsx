@@ -1,11 +1,11 @@
 import React from 'react';
-import { OrderItem } from '../components/OrderItem';
-
-export const MyOrder = () => {
+import { OrderItem } from '@components/OrderItem';
+import Flechita from '@icons/flechita.svg';
+const MyOrder = () => {
   return (
     <aside className='MyOrder'>
       <div className='title-container'>
-        <img src='./icons/flechita.svg' alt='arrow' />
+        <img src={Flechita} alt='arrow' />
         <p className='title'>My order</p>
       </div>
       <div className='my-order-content'>
@@ -21,3 +21,5 @@ export const MyOrder = () => {
     </aside>
   );
 };
+
+export default MyOrder;
